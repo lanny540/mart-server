@@ -67,5 +67,11 @@
             "@php artisan ide-helper:meta",
             "php artisan ide-helper:models -W"
         ]
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
     }
 }

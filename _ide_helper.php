@@ -3,12 +3,12 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.22.4 on 2020-07-30 16:40:06.
+ * Generated for Laravel 7.22.4 on 2020-07-31 08:58:47.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
- * @see https://github.com/barryvdh/laravel-ide-helper
+ * @see    https://github.com/barryvdh/laravel-ide-helper
  */
 
 namespace Illuminate\Support\Facades { 
