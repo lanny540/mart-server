@@ -7,3 +7,4 @@ Route::get('/test', function (Request $request) {
 });
 
 Route::apiResource('categories', 'CategoryController');
+Route::apiResource('products', 'ProductController');
