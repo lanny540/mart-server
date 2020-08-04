@@ -8,12 +8,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ProductIndexTest extends TestCase
+class ProductTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
-     * @test
+     * @test 产品总览
      */
     public function product_index_api_should_return_paginate_data()
     {
@@ -42,4 +42,25 @@ class ProductIndexTest extends TestCase
     }
 
     //TODO: 产品总览筛选、过滤
+
+    /**
+     * @test 产品详情
+     */
+    public function product_show_api_should_return_a_exist_product()
+    {
+        // 产品不存在
+        $response = $this->json('GET', 'api/products/heelo');
+
+        $response->assertStatus(404);
+
+        // 产品存在
+        factory(Category::class, 1)->create();
+        $product = factory(Product::class, 1)->create()->first();
+
+        $response = $this->json('GET', 'api/products/' . $product->slug);
+
+        $response->assertJsonFragment([
+            'slug' => $product->slug,
+        ]);
+    }
 }
