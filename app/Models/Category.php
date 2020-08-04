@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Category whereSlug($value)
  * @method static Builder|Category whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+ * @property-read int|null $products_count
  */
 class Category extends Model
 {
@@ -44,6 +46,11 @@ class Category extends Model
     public function parent()
     {
         return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 
     /**

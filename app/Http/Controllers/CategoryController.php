@@ -16,15 +16,15 @@ class CategoryController extends Controller
     public function index()
     {
         return CategoryResource::collection(
-            Category::roots()->sort()->get()
-//            Category::with('children')->roots()->sort()->get()
+//            Category::roots()->sort()->get()
+            Category::with('children')->roots()->sort()->get()
         );
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,8 +46,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param Request $request
+     * @param int     $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
