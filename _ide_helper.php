@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.22.4 on 2020-08-04 11:39:47.
+ * Generated for Laravel 7.23.0 on 2020-08-06 10:40:53.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -8055,10 +8055,15 @@ namespace Illuminate\Support\Facades {
     }
 
     /**
-     * 
+     *
      *
      * @method static mixed reset(array $credentials, \Closure $callback)
      * @method static string sendResetLink(array $credentials)
+     * @method static \Illuminate\Contracts\Auth\CanResetPassword getUser(array $credentials)
+     * @method static string createToken(\Illuminate\Contracts\Auth\CanResetPassword $user)
+     * @method static void deleteToken(\Illuminate\Contracts\Auth\CanResetPassword $user)
+     * @method static bool tokenExists(\Illuminate\Contracts\Auth\CanResetPassword $user, string $token)
+     * @method static \Illuminate\Auth\Passwords\TokenRepositoryInterface getRepository()
      * @see \Illuminate\Auth\Passwords\PasswordBroker
      */ 
     class Password {
@@ -17337,71 +17342,130 @@ namespace  {
              * Add a where between statement to the query.
              *
              * @param string $column
-             * @param array $values
+             * @param array  $values
              * @param string $boolean
-             * @param bool $not
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function whereBetween($column, $values, $boolean = 'and', $not = false)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->whereBetween($column, $values, $boolean, $not);
-            }
-         
-            /**
-             * Add an or where between statement to the query.
-             *
-             * @param string $column
-             * @param array $values
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function orWhereBetween($column, $values)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->orWhereBetween($column, $values);
-            }
-         
-            /**
-             * Add a where not between statement to the query.
-             *
-             * @param string $column
-             * @param array $values
-             * @param string $boolean
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function whereNotBetween($column, $values, $boolean = 'and')
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->whereNotBetween($column, $values, $boolean);
-            }
-         
-            /**
-             * Add an or where not between statement to the query.
-             *
-             * @param string $column
-             * @param array $values
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function orWhereNotBetween($column, $values)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->orWhereNotBetween($column, $values);
-            }
-         
-            /**
-             * Add an "or where not null" clause to the query.
-             *
-             * @param string $column
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function orWhereNotNull($column)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
+             * @param bool   $not
+             * @return \Illuminate\Database\Query\Builder
+             * @static
+             */
+        public static function whereBetween($column, $values, $boolean = 'and', $not = false)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereBetween($column, $values, $boolean, $not);
+        }
+
+        /**
+         * Add a where between statement using columns to the query.
+         *
+         * @param string $column
+         * @param array  $values
+         * @param string $boolean
+         * @param bool   $not
+         * @return \Illuminate\Database\Query\Builder
+         * @static
+         */
+        public static function whereBetweenColumns($column, $values, $boolean = 'and', $not = false)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereBetweenColumns($column, $values, $boolean, $not);
+        }
+
+        /**
+         * Add an or where between statement to the query.
+         *
+         * @param string $column
+         * @param array  $values
+         * @return \Illuminate\Database\Query\Builder
+         * @static
+         */
+        public static function orWhereBetween($column, $values)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereBetween($column, $values);
+        }
+
+        /**
+         * Add an or where between statement using columns to the query.
+         *
+         * @param string $column
+         * @param array  $values
+         * @return \Illuminate\Database\Query\Builder
+         * @static
+         */
+        public static function orWhereBetweenColumns($column, $values)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereBetweenColumns($column, $values);
+        }
+
+        /**
+         * Add a where not between statement to the query.
+         *
+         * @param string $column
+         * @param array  $values
+         * @param string $boolean
+         * @return \Illuminate\Database\Query\Builder
+         * @static
+         */
+        public static function whereNotBetween($column, $values, $boolean = 'and')
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereNotBetween($column, $values, $boolean);
+        }
+
+        /**
+         * Add a where not between statement using columns to the query.
+         *
+         * @param string $column
+         * @param array  $values
+         * @param string $boolean
+         * @return \Illuminate\Database\Query\Builder
+         * @static
+         */
+        public static function whereNotBetweenColumns($column, $values, $boolean = 'and')
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereNotBetweenColumns($column, $values, $boolean);
+        }
+
+        /**
+         * Add an or where not between statement to the query.
+         *
+         * @param string $column
+         * @param array  $values
+         * @return \Illuminate\Database\Query\Builder
+         * @static
+         */
+        public static function orWhereNotBetween($column, $values)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereNotBetween($column, $values);
+        }
+
+        /**
+         * Add an or where not between statement using columns to the query.
+         *
+         * @param string $column
+         * @param array  $values
+         * @return \Illuminate\Database\Query\Builder
+         * @static
+         */
+        public static function orWhereNotBetweenColumns($column, $values)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereNotBetweenColumns($column, $values);
+        }
+
+        /**
+         * Add an "or where not null" clause to the query.
+         *
+         * @param string $column
+         * @return \Illuminate\Database\Query\Builder
+         * @static
+         */
+        public static function orWhereNotNull($column)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->orWhereNotNull($column);
             }
          
