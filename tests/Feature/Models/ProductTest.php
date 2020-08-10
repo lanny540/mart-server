@@ -38,7 +38,7 @@ class ProductTest extends TestCase
         // 判断每页数据是10条
         $data = json_decode($response->getContent())->data;
 
-        self::assertCount(10, $data);
+        self::assertCount(8, $data);
     }
 
     //TODO: 产品总览筛选、过滤
