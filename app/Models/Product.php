@@ -37,11 +37,20 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
-    protected $fillable = ['name', 'slug', 'poster', 'description', 'price', 'category_id', 'brand'];
+    protected $fillable = ['name', 'slug', 'poster', 'description', 'price', 'category_id', 'brand', 'specification'];
+
+    protected $casts = [
+        'specification' => 'object'
+    ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function variations()
+    {
+        return $this->hasMany(ProductVariation::class);
     }
 
     public function getRouteKeyName()
